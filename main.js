@@ -3,7 +3,7 @@
 //variables de entrada
 
 
-let total = 0;
+
 let seleccion = 0;
 
 //Array de eventos
@@ -46,7 +46,7 @@ function agregar() {
 
 function mostrar(lista_eventos) {
 
-    /// Opcion 1(lista un evento a la vez):
+    // Opcion 1(lista un evento a la vez):*******************
 
     /* for (let i = 0; i < lista_eventos.length; i++) {
 
@@ -54,7 +54,7 @@ function mostrar(lista_eventos) {
             "\nPrecio: $" + lista_eventos[i].precio);
     }*/
 
-    /// Opcion 2(lista todos los eventos): 
+    // Opcion 2(lista todos los eventos):******************** 
 
     const lista = lista_eventos.map(item => `${item.nombre}:  ${item.precio} $`).join("\n");
 
@@ -87,9 +87,10 @@ function recaudacion2(lista_eventos) {
 
 
 ///Inicio********************************************** */
+//Menu principal
 
 while (seleccion != -1) {
-    seleccion = Number(prompt("Eliga una opcion: 1-Agregar Evento // 2-Eventos y precios // 3-Recaudacion x evento 4-Recaudacion total // 5-Salir: "));
+    seleccion = Number(prompt("Eliga una opcion:\n 1-Agregar Evento\n 2-Eventos y precios\n 3-Recaudacion por evento\n 4-Recaudacion total\n 5-Salir "));
     switch (seleccion) {
         case 1: lista_eventos.push(agregar());
             break;
