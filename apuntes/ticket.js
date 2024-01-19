@@ -140,7 +140,7 @@ while (seleccion != -1) {
         case 7: seleccion = -1;
             break;
         default:
-            alert("Opción no válida. Introduce un número válido.");
+           /* alert("Opción no válida. Introduce un número válido.");*/
 
     }
 }
@@ -148,7 +148,13 @@ while (seleccion != -1) {
 
 ///****************************************************** */
 
+const selectElement = document.querySelector("select[name=options]");
+selectElement.addEventListener("change", handleOptionSelection);
 
+function handleOptionSelection(event) {
+    const selectedOption = event.target.value;
+    // Aquí, agregue código para manejar la opción seleccionada, como mostrar campos de entrada adicionales o realizar una acción.
+}
 
 
 
