@@ -9,7 +9,7 @@ const parrafos = document.querySelectorAll(".parrafo");
 // parrafos.forEach(parrafo => console.log(parrafo));
 // console.log(parrafos[0]);
 
-// console.log(contenido.classList);
+// console.log(contenido.classList); ()
 // contenido.classList.add("prueba2");
 // contenido.classList.remove("contenido");
 // console.log(contenido.classList);
