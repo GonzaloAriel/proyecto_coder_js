@@ -1,29 +1,39 @@
-let lista_eventos = [
-  { nombre: "Chucky 3D", precio: 3500, entradas: 50 },
-  { nombre: "Godzilla", precio: 2000, entradas: 65 },
-  { nombre: "Loco por Mery", precio: 2000, entradas: 30 },
-  { nombre: "Rapido y furioso 15 4D", precio: 4500, entradas: 70 },
-  { nombre: "El hombre araña III", precio: 2000, entradas: 70 },
-  { nombre: "Floricienta en vivo!", precio: 22000, entradas: 70 }
+///Base de datos:***************************************
+
+let listaEventos = [
+  { id: 1, img: "./img/El_chico_y_la_garza.jpg", nombre: "El niño y la garza", precio: 3500, dia: "viernes" },
+  { id: 2, img: "./img/Godzilla-vs-Kong-Poster-1.webp", nombre: "Godzilla vs Kong", precio: 2000, dia: "martes" },
+  { id: 3, img: "./img/the-batman-2022-i122125.jpg", nombre: "The Batman", precio: 2000, dia: "miercoles" },
+  { id: 4, img: "./img/rapido y furioso 10.jpg", nombre: "Rapido y furioso X", precio: 4500, dia: "sabado" },
+  { id: 5, img: "./img/el hombre araña 3.webp", nombre: "El hombre araña III", precio: 2000, dia: "domingo" },
+  { id: 6, img: "./img/star war.jpg", nombre: "Star war", precio: 22000, dia: "jueves" }
 ];
 
+let horarios = [
+  { id: 1, hora1: "17:30", hora2: "21:30" },
+  { id: 2, hora1: "17:30", hora2: "21:30" },
+  { id: 3, hora1: "17:30", hora2: "21:30" },
+  { id: 4, hora1: "17:30", hora2: "21:30" },
+  { id: 5, hora1: "17:30", hora2: "21:30" },
+  { id: 6, hora1: "17:30", hora2: "21:30" }
+];
 
+const carrito = [];
 
-const selectElement = document.querySelector(".form-select");
+listaEventos.forEach((item) => {
+  let div = document.createElement("div");
 
-selectElement.addEventListener("change", function (
-) {
-  if (this.value === "1") {
-    const listElement = document.createElement("ul");
-    lista_eventos.forEach(item => {
-      const listItem = document.createElement("li");
-      listItem.textContent = `${item.nombre}:  ${item.precio}$`;
-      listElement.appendChild(listItem);
-    });
-    document.body.appendChild(listElement);
-  }
+  div.innerHTML = `
+  <div class="card" style="width: 18rem;">
+            <img src="${item.img}" class="card-img-top" alt="iamgen-${item.id}">
+            <div class="card-body">
+                <p class="card-text">Aca descripcion de la pelicula o sinopsis</p>
+            </div>
+  </div>
+  <h2> ${item.nombre}
+  <b> ${item.precio}$
+  <button id="boton${item.id}"> Horarios </button>
+  `;
 
-  if(this.value === "2"){
-    document.body.removeChild(listElement);
-  }
-});
+  document.body.append(div)
+})
