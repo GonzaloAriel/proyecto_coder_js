@@ -24,7 +24,7 @@ listaEventos.forEach((item) => {
   let div = document.createElement("div");
 
   div.innerHTML = `
-  <div class="card" style="width: 18rem;">
+  <div class="card" style="width: 12rem;">
             <img src="${item.img}" class="card-img-top" alt="iamgen-${item.id}">
             <div class="card-body">
                 <p class="card-text">Aca descripcion de la pelicula o sinopsis</p>
