@@ -1,4 +1,4 @@
-///Base de datos:***************************************
+///Base de datos:************************************ */
 
 let listaEventos = [
   { id: 1, img: "./img/El_chico_y_la_garza.jpg", nombre: "El niño y la garza", precio: 3500, dia: "viernes" },
@@ -18,7 +18,28 @@ let horarios = [
   { id: 6, hora1: "17:30", hora2: "21:30" }
 ];
 
-const carrito = [];
+
+///************************************************** */
+const ticket = [];
+const contenido = document.getElementById("contenido");
+
+//funcion para agregar al array "ticket".
+const agregar = (id) => {
+  //buscamos la pelicula por su id.
+  const pelicula = listaEventos.find((item) => item.id === id);
+  alert(`
+    Id: ${pelicula.id}
+    Nombre: ${pelicula.nombre}
+    Precio: ${pelicula.precio}
+  `);
+  ticket.push(pelicula); //agregamos el producto al carrito
+  localStorage.setItem("pelicula", JSON.stringify(ticket)); //guardamos como JSON en almacenamiento local.
+
+  const ticketEnStorage= JSON.parse(localStorage.getItem("pelicula"));//convertimos el archivo JSON en un array  
+  
+  console.log(ticketEnStorage);//control para ver si se paso bien el array.
+
+};
 
 listaEventos.forEach((item) => {
   let div = document.createElement("div");
@@ -32,8 +53,12 @@ listaEventos.forEach((item) => {
   </div>
   <h2> ${item.nombre}
   <b> ${item.precio}$
-  <button id="boton${item.id}"> Horarios </button>
+  <button class="boton_comprar" id="boton${item.id}"> Comprar </button>
   `;
+  contenido.append(div)
+  
+ let boton = document.getElementById(`boton${item.id}`);
+ boton.addEventListener("click", () => agregar(item.id));
+});
 
-  document.body.append(div)
-})
+
