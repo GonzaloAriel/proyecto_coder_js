@@ -19,6 +19,9 @@ fetch(urlMoviePopular)
 
 // Funcion para agregar al "carrito"
 let carrito = [];
+
+JSON.parse(localStorage.getItem("pelisCarrito")) || localStorage.setItem("pelisCarrito", JSON.stringify(carrito));
+
 carrito = JSON.parse(localStorage.getItem("pelisCarrito"));
 
 const agregar = (id, titulo) => {
