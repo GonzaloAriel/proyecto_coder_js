@@ -10,6 +10,7 @@ fetch(urlMoviePopular)
   .then(response => response.json())
   .then(data => {
 
+    renderizarPopular(data.results);
     localStorage.setItem("peliculaID", JSON.stringify(data.results)); //guardamos como JSON en almacenamiento local.
   })
 
