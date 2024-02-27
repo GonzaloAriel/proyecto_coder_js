@@ -1,11 +1,7 @@
-// Importaciones***************************************** */
-import { renderizarCarrito, agregar } from "../js/carrito.js";
-import { renderizarPopular } from "../db/popular.js";
+import { cargarPeliculasPopulares } from "../db/popular.js";
+import { renderizarCarrito } from "../js/carrito.js";
 
-///Api-popular******************************************** */
-const popular = JSON.parse(localStorage.getItem("peliculaID"));
-renderizarPopular(popular);
+// Llamada a la función para cargar las películas populares
+cargarPeliculasPopulares();
 
 renderizarCarrito();
-
-

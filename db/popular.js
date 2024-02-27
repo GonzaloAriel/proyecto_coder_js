@@ -3,16 +3,17 @@ import { agregar } from "../js/carrito.js";
 
 // Fetch para api-movie-popular********************************** */
 let pagina = 1; //Variable para poder paginar si hay muchas peliculas.
-
 const urlMoviePopular = `https://api.themoviedb.org/3/movie/popular?api_key=fdf26679693d20fd9a0cc49b2cc4a9a9&language=es-MX&page=${pagina}`;
 
-fetch(urlMoviePopular)
-  .then(response => response.json())
-  .then(data => {
-
-    renderizarPopular(data.results);
-    localStorage.setItem("peliculaID", JSON.stringify(data.results)); //guardamos como JSON en almacenamiento local.
-  })
+export function cargarPeliculasPopulares(
+) {
+  fetch(urlMoviePopular)
+    .then(response => response.json())
+    .then(data => {
+      renderizarPopular(data.results);
+      localStorage.setItem("peliculaID", JSON.stringify(data.results)); // Guardamos como JSON en almacenamiento local.
+})
+}
 
 ///renderizar las cards**********************************
 export function renderizarPopular(arrayMovie) {
@@ -29,7 +30,7 @@ export function renderizarPopular(arrayMovie) {
             </button>
         </div>
       `;
-    contenido.append(div)
+    contenido.append(div);
 
     let boton = document.getElementById(`boton${item.id}`);
     boton.addEventListener("click", () => agregar(item.id, item.title));

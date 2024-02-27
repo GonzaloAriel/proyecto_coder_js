@@ -1,4 +1,3 @@
-// Renderizar compras carrito*********************************
 export function renderizarCarrito() {
     const divCarrito = document.getElementById("icono_carrito");
 
@@ -9,22 +8,57 @@ export function renderizarCarrito() {
     const compras = JSON.parse(localStorage.getItem("pelisCarrito"));
 
     divCarrito.innerHTML = `
-    ${compras.length}
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./img/carrito.png" alt="imagen_carrito">
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-            <li><a class="dropdown-item" href="#">Opción 1</a></li>
-            <li><a class="dropdown-item" href="#">Opción 2</a></li>
-            <li><a class="dropdown-item" href="#">Opción 3</a></li>
-        </ul>
-    </div>    
-`;
-    divCarrito.append(divCarrito);
-}
+            ${compras.length}
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="./img/carrito.png" alt="imagen_carrito">
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                    <!-- Opciones del menú desplegable -->
+                </ul>
+            </div>
+            `;
 
-// Funcion para agregar al "carrito"***************************
+    // Iterar sobre el array de compras y crear opciones de menú para cada película
+    const baseUrl = "https://image.tmdb.org/t/p/w200/";
+
+    compras.forEach((compra) => {
+        const dropdownMenu = document.querySelector(`.dropdown-menu`);
+        const dropdownItem = document.createElement(`div`);
+        dropdownItem.className = `dropdown-item`;
+
+        const img = document.createElement(`img`);
+        img.src = baseUrl + compra.poster_path;
+        img.alt = `Imagen de ${compra.title}`;
+        img.style.maxWidth = "80px";
+        img.className = "img-hover";
+
+        const title = document.createElement(`div`);
+        title.textContent = `${compra.title}`;
+        title.className = "title";
+
+        const price = document.createElement(`p`);
+        price.textContent = `$ ${parseFloat(compra.vote_count).toFixed(2)}`;
+        price.className = "dropdown-price";
+        price.className = "price";
+
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = `Eliminar`;
+        removeBtn.className = "removeBtn";
+        removeBtn.addEventListener("click", () => {
+            quitarProductoDelCarrito(compra.id);
+        });
+
+        dropdownItem.appendChild(img);
+        dropdownItem.appendChild(title);
+        dropdownItem.appendChild(price);
+        dropdownItem.appendChild(removeBtn);
+
+        dropdownMenu.appendChild(dropdownItem);
+    });
+}
+///****************************************************************************** */
+/// Funcion para agregar al "carrito"
 let carrito = [];
 
 JSON.parse(localStorage.getItem("pelisCarrito")) || localStorage.setItem("pelisCarrito", JSON.stringify(carrito));
@@ -62,5 +96,25 @@ export const agregar = (id, titulo) => {
             }
         });
 };
+
+///****************************************************************************** */
+// Funcion borrar compra:
+function quitarProductoDelCarrito(id) {
+    //convertimos el JSON del array completo del local storage para poder buscar el id de la pelicula
+    const pelisEnStorage = JSON.parse(localStorage.getItem("pelisCarrito"));
+
+    //buscamos en el array
+    const peli = pelisEnStorage.findIndex((item) => item.id === id);
+    
+    // Quitar la película del carrito
+    if (peli !== -1) {
+        carrito.splice(peli, 1);
+        
+        localStorage.setItem("pelisCarrito", JSON.stringify(carrito)); //guardamos como JSON en almacenamiento local.
+    }
+    // Actualizar el DOM para reflejar el cambio
+    renderizarCarrito();
+}
+
 
 
