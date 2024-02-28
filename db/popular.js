@@ -23,8 +23,6 @@ export function renderizarPopular(arrayMovie) {
     div.innerHTML = `
         <div class="card" style="width: 12rem;">
           <img src="https://image.tmdb.org/t/p/w500/${item.poster_path}" class="card-img-top" alt="iamgen-${item.original_title}">
-          <div class="card-body">
-          </div>
             <h2 class="titulo_card"> ${item.title}
             <button class="boton_comprar" id="boton${item.id}"> Comprar
             </button>

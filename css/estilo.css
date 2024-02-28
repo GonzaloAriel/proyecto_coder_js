@@ -19,7 +19,7 @@ footer {
 .nav_footer {
     display: flex;
     justify-content: center;
-    background-color: hsl(200, 51%, 18%);
+    background-color: hsl(207, 84%, 32%);
     border-radius: 20px;
     width: 90%;
     height: 90px;
@@ -37,7 +37,7 @@ footer {
     height: 70px;
     margin: 0 auto;
     padding: 90px;
-    background-color: hsl(200, 51%, 18%);
+    background-color: hsl(207, 84%, 32%);
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -45,7 +45,8 @@ footer {
 }
 
 .logo {
-    width: 140px;
+    width: 200px;
+    border-radius: 10%;
 }
 
 .ul_header {
@@ -68,7 +69,7 @@ footer {
 }
 
 .a_header:hover {
-    background-color: #6883d3;
+    background-color: #000000;
     color: #fefefe;
     border-radius: 10px;
 }
@@ -82,7 +83,11 @@ footer {
     border-radius: 10px;
     border: 1px solid #000;
     padding: 5px 10px;
-    background-color: #eee;
+    margin-left: 40px;
+    margin-top: 10px;
+    margin-bottom: 1px;
+    display: block;
+    background-color: hsl(207, 84%, 32%);
     height: 35px;
 }
 
@@ -99,10 +104,19 @@ footer {
         "SHLN" 50;
 }
 
+.card{
+    background-color: hsl(0, 0%, 0%);
+}
+
 .titulo_card {
     font-size: medium;
     text-align: center;
     padding: 10px;
+    color: rgb(57, 209, 255);
+}
+
+.titulo_card{
+    background-color: hsl(207, 84%, 32%);
 }
 
 .row {
@@ -157,7 +171,7 @@ footer {
 }
 
 .dropdown-item {
-    color: rgb(29, 251, 255);
+    color: #e837f1;
     border: 1px rgb(11, 6, 6);
     background-color: rgba(0, 0, 0, 0.281);
 }
@@ -168,7 +182,7 @@ footer {
 
 .dropdown-item:hover .title,
 .dropdown-item:hover .price {
-    color: rgb(29, 251, 255);
+    color: #e837f1;
 }
 
 
@@ -189,7 +203,7 @@ overflow-y: auto;
 }
 
 .removeBtn {
-    background-color: #f44336; /* Rojo */
+    background-color: #e837f1; /* Rojo */
 color: white;
     padding: 5px 10px;
     border: none;
