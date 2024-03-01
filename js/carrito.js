@@ -1,3 +1,5 @@
+import { imgCarrito } from "../db/img_carrito.js";
+
 export function renderizarCarrito() {
     const divCarrito = document.getElementById("icono_carrito");
 
@@ -7,17 +9,19 @@ export function renderizarCarrito() {
     // Codigo para renderizar el carrito
     const compras = JSON.parse(localStorage.getItem("pelisCarrito"));
 
-    divCarrito.innerHTML = `
-            ${compras.length}
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="./img/carrito.png" alt="imagen_carrito">
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                    <!-- Opciones del menú desplegable -->
-                </ul>
-            </div>
-            `;
+    if (compras.length !== 0) {
+        divCarrito.innerHTML = `
+                ${compras.length}
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="${imgCarrito}" alt="imagen_carrito">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                        <!-- Opciones del menú desplegable -->
+                    </ul>
+                </div>
+                `;
+    }
 
     // Iterar sobre el array de compras y crear opciones de menú para cada película
     const baseUrl = "https://image.tmdb.org/t/p/w200/";
@@ -105,11 +109,11 @@ function quitarProductoDelCarrito(id) {
 
     //buscamos en el array
     const peli = pelisEnStorage.findIndex((item) => item.id === id);
-    
+
     // Quitar la película del carrito
     if (peli !== -1) {
         carrito.splice(peli, 1);
-        
+
         localStorage.setItem("pelisCarrito", JSON.stringify(carrito)); //guardamos como JSON en almacenamiento local.
     }
     // Actualizar el DOM para reflejar el cambio
