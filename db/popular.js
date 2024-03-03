@@ -1,5 +1,6 @@
 // Importaciones***************************************** */
 import { agregar } from "../js/carrito.js";
+// ****************************************************** */
 
 // Fetch para api-movie-popular********************************** */
 let pagina = 1; //Variable para poder paginar si hay muchas peliculas.
@@ -10,15 +11,17 @@ export function cargarPeliculasPopulares(
   fetch(urlMoviePopular)
     .then(response => response.json())
     .then(data => {
-      renderizarPopular(data.results);
+      renderizarCard(data.results);
       localStorage.setItem("peliculaID", JSON.stringify(data.results)); // Guardamos como JSON en almacenamiento local.
 })
 }
 
 ///renderizar las cards**********************************
-export function renderizarPopular(arrayMovie) {
+export function renderizarCard(arrayMovie) {
   arrayMovie.forEach((item) => {
     let div = document.createElement("div");
+
+    div.innerHTML = "";
 
     div.innerHTML = `
         <div class="card" style="width: 12rem;">

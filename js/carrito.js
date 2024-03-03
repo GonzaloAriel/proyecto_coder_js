@@ -1,4 +1,6 @@
+// Importaciones***************************************** */
 import { imgCarrito } from "../db/img_carrito.js";
+// ****************************************************** */
 
 export function renderizarCarrito() {
     const divCarrito = document.getElementById("icono_carrito");
@@ -11,9 +13,9 @@ export function renderizarCarrito() {
 
     if (compras.length !== 0) {
         divCarrito.innerHTML = `
-                ${compras.length}
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="dropdown">
+        ${compras.length}
+                    <button class="btn btn-black dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="${imgCarrito}" alt="imagen_carrito">
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
@@ -34,7 +36,7 @@ export function renderizarCarrito() {
         const img = document.createElement(`img`);
         img.src = baseUrl + compra.poster_path;
         img.alt = `Imagen de ${compra.title}`;
-        img.style.maxWidth = "80px";
+        img.style.maxWidth = "120px";
         img.className = "img-hover";
 
         const title = document.createElement(`div`);
@@ -87,7 +89,7 @@ export const agregar = (id, titulo) => {
                 const peli = pelisEnStorage.find((item) => item.id === id);
 
 
-                carrito.push(peli); //agregamos el producto al carrit
+                carrito.push(peli); //agregamos el producto al carrito
 
                 localStorage.setItem("pelisCarrito", JSON.stringify(carrito)); //guardamos como JSON en almacenamiento local.
 
@@ -102,8 +104,8 @@ export const agregar = (id, titulo) => {
 };
 
 ///****************************************************************************** */
-// Funcion borrar compra:
-function quitarProductoDelCarrito(id) {
+// Funcion borrar compra del carrito:
+export function quitarProductoDelCarrito(id) {
     //convertimos el JSON del array completo del local storage para poder buscar el id de la pelicula
     const pelisEnStorage = JSON.parse(localStorage.getItem("pelisCarrito"));
 

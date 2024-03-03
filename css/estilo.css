@@ -104,7 +104,7 @@ footer {
         "SHLN" 50;
 }
 
-.card{
+.card {
     background-color: hsl(0, 0%, 0%);
 }
 
@@ -115,7 +115,7 @@ footer {
     color: rgb(57, 209, 255);
 }
 
-.titulo_card{
+.titulo_card {
     background-color: hsl(207, 84%, 32%);
 }
 
@@ -127,16 +127,8 @@ footer {
 
 
 /*Carrito y menu************************************************ */
-#check {
-    display: none;
-}
-
-.checkbtn {
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    position: relative;
-    cursor: pointer;
+.dropdown{
+    padding-bottom: 15px;
 }
 
 .menu_icon img {
@@ -151,7 +143,7 @@ footer {
 .dropdown-menu,
 .dropdown-toggle {
     background-color: transparent;
-    color: #515050;
+    color: #97098d;
     border: none;
 }
 
@@ -192,19 +184,21 @@ footer {
 }
 
 /* Corregido la clase para aplicar el estilo a las imágenes en el menú desplegable */
-.dropdown-item > div {
+.dropdown-item>div {
     display: flex;
     justify-content: space-between;
 }
 
 .dropdown-menu {
-    max-height: 300px; /* Ajusta la altura a tu gusto */
-overflow-y: auto;
+    max-height: 300px;
+    /* Ajusta la altura a tu gusto */
+    overflow-y: auto;
 }
 
 .removeBtn {
-    background-color: #e837f1; /* Rojo */
-color: white;
+    background-color: #e837f1;
+    /* Rojo */
+    color: white;
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
@@ -212,7 +206,8 @@ color: white;
 }
 
 .removeBtn:hover {
-    background-color: #ee3124; /* Rojo más oscuro cuando se pasa el mouse por encima */
+    background-color: #ee3124;
+    /* Rojo más oscuro cuando se pasa el mouse por encima */
 }
 
 /**************************************************** */
