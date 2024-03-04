@@ -120,6 +120,7 @@ export function quitarProductoDelCarrito(id) {
     }
     // Actualizar el DOM para reflejar el cambio
     renderizarCarrito();
+    location.reload();
 }
 
 

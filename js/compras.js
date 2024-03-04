@@ -2,7 +2,7 @@ import { renderizarCarrito, quitarProductoDelCarrito } from "../js/carrito.js";
 ///****************************************************************************
 actualizarCompras();
 
- function actualizarCompras() {
+export function actualizarCompras() {
     const compras = JSON.parse(localStorage.getItem("pelisCarrito"));
     renderizarCardCarrito(compras);
     renderizarCarrito();
@@ -26,6 +26,7 @@ actualizarCompras();
             boton.addEventListener("click", async () => {
                 await quitarProductoDelCarrito(item.id);
                 div.innerHTML = "";
+                location.reload();
             });
         })
     }
